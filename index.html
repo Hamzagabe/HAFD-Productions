@@ -5,169 +5,225 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HAFD Productions</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
-      color: #333;
-    }
-    header {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      margin-top: 0.5rem;
-      font-size: 1.2rem;
-    }
-    section {
-      padding: 2rem 1rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .features ul {
-      list-style: none;
-      padding: 0;
-    }
-    .features li {
-      background: #e3e3e3;
-      margin: 0.5rem 0;
-      padding: 1rem;
-      border-radius: 8px;
-    }
-    .filter {
-      margin-bottom: 1rem;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .filter button {
-      background: #1a1a1a;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .filter input[type="text"] {
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      flex: 1;
-      min-width: 150px;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .product-card {
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-    .product-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 1rem;
-    }
-    .product-card h3 {
-      font-size: 1.2rem;
-      margin: 0.5rem 0;
-    }
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .popup-content {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-      position: relative;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .popup-content img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .color-options span {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      margin: 0 5px;
-      border: 1px solid #333;
-    }
-    .color-Silver { background: silver; }
-    .color-Gold { background: gold; }
-    .color-Red { background: red; }
-    .color-Yellow { background: yellow; }
-    .color-Green { background: green; }
-    .color-Blue { background: blue; }
+/* Light Theme (Default) */
+body[data-theme="light"] {
+  background-color: #f7f7f7;
+  color: #333;
+}
+body[data-theme="light"] header,
+body[data-theme="light"] footer {
+  background-color: #1a1a1a;
+  color: white;
+}
+body[data-theme="light"] .features li,
+body[data-theme="light"] .product-card,
+body[data-theme="light"] .popup-content {
+  background: white;
+  border-color: #ccc;
+  color: #333;
+}
+body[data-theme="light"] .filter input[type="text"] {
+  background: white;
+  border: 1px solid #ccc;
+  color: #333;
+}
 
-    footer {
-      text-align: center;
-      background: #1a1a1a;
-      color: white;
-      padding: 1rem;
-    }
+/* Dark Theme */
+body[data-theme="dark"] {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+body[data-theme="dark"] header,
+body[data-theme="dark"] footer {
+  background-color: #1a1a1a;
+  color: white;
+}
+body[data-theme="dark"] .features li,
+body[data-theme="dark"] .product-card,
+body[data-theme="dark"] .popup-content {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #f0f0f0;
+}
+body[data-theme="dark"] .filter input[type="text"] {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  color: #f0f0f0;
+}
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      .popup-content {
-        padding: 1rem;
-      }
-      .product-card img {
-        height: 140px;
-      }
-    }
+header {
+  background-color: #0b1826;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+header p {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+section {
+  padding: 2rem 1rem;
+  max-width: 1000px;
+  margin: auto;
+}
+.features ul {
+  list-style: none;
+  padding: 0;
+}
+.features li {
+  background: #1e1e1e;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+.filter {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.filter button:hover {
+  background: #444;
+}
+.filter input[type="text"] {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  flex: 1;
+  min-width: 150px;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.product-card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.product-card h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.popup-content {
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #f0f0f0;
+  border: 1px solid #333;
+}
+.popup-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #aaa;
+}
+.color-options span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 5px;
+  border: 1px solid #999;
+}
+.color-Silver { background: silver; }
+.color-Gold { background: gold; }
+.color-Red { background: red; }
+.color-Yellow { background: yellow; }
+.color-Green { background: green; }
+.color-Blue { background: blue; }
+
+footer {
+  text-align: center;
+  background: #1a1a1a;
+  color: white;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
+  .popup-content {
+    padding: 1rem;
+  }
+  .product-card img {
+    height: 140px;
+  }
+}
+
   </style>
 </head>
 <body>
   <header>
     <h1>HAFD Productions</h1>
     <p>Where Ideas Become Reality</p>
+    <div style="margin-top: 1rem;">
+      <label style="cursor: pointer;">
+        <input type="checkbox" id="themeToggle" style="transform: scale(1.2); margin-right: 0.5rem;" />
+        Dark Mode
+      </label>
+    </div>
+    
   </header>
 
   <section class="intro">
@@ -281,6 +337,17 @@
     }
 
     renderProducts();
+    const toggle = document.getElementById('themeToggle');
+const storedTheme = localStorage.getItem('theme') || 'dark';
+
+document.body.setAttribute('data-theme', storedTheme);
+toggle.checked = storedTheme === 'dark';
+
+toggle.addEventListener('change', () => {
+  const theme = toggle.checked ? 'dark' : 'light';
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+});
   </script>
 </body>
 </html>
