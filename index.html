@@ -190,6 +190,7 @@
       <button onclick="filterProducts('all')">All</button>
       <button onclick="filterProducts('Utility')">Utility</button>
       <button onclick="filterProducts('Accessories')">Accessories</button>
+      <button onclick="filterProducts('Decoration')">Decoration</button>
       <input type="text" id="searchBar" oninput="searchProducts()" placeholder="Search products...">
     </div>
     <div class="product-grid" id="productGrid"></div>
@@ -228,26 +229,12 @@
 
   <script>
     const products = [
-      {
-        title: 'Drain Cleaner',
-        image: 'https://via.placeholder.com/300x200.png?text=Drain+Cleaner',
-        description: 'Durable, flexible plastic tool to unclog sinks and drains.',
-        price: '35 EGP',
-        category: 'Utility'
-      },
-      {
-        title: 'Car Phone Holder',
-        image: 'https://via.placeholder.com/300x200.png?text=Car+Phone+Holder',
-        description: 'Custom-fit holder to secure your phone while driving.',
-        price: '55 EGP',
-        category: 'Accessories'
-      },
-      {
-        title: 'Cable Organizer',
-        image: 'https://via.placeholder.com/300x200.png?text=Cable+Organizer',
-        description: 'Keep your desk tidy with simple, 3D printed cable clips.',
-        price: '25 EGP',
-        category: 'Accessories'
+    {
+        title: 'Sign',
+        image: 'Assets/Pictures/El_Zoz_Sign.jpeg',
+        description: 'Beatiful sign for your front dor or bedroom',
+        price: 'Variable',
+        category: 'Decoration'
       }
     ];
 
