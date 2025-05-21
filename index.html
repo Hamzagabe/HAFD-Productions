@@ -161,11 +161,49 @@ section {
   color: #f0f0f0;
   border: 1px solid #333;
 }
-.popup-content img {
+.popup-images {
+  position: relative;
+}
+.popup-images img {
   width: 100%;
   height: auto;
   border-radius: 10px;
+  display: none;
 }
+.popup-images img.active {
+  display: block;
+}
+.popup-images .nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+}
+.popup-images .prev {
+  left: 10px;
+}
+.popup-images .next {
+  right: 10px;
+}
+
+.popup-images img,
+.popup-images video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: none;
+}
+
+.popup-images img.active,
+.popup-images video.active {
+  display: block;
+}
+
 .close-btn {
   position: absolute;
   top: 10px;
@@ -210,7 +248,6 @@ footer {
     height: 140px;
   }
 }
-
   </style>
 </head>
 <body>
@@ -223,8 +260,8 @@ footer {
         Dark Mode
       </label>
     </div>
-    
   </header>
+
 
   <section class="intro">
     <p>We make any and all plastic products – from keychains and phone holders to mechanical parts. The only limit is your imagination. Based in Alexandria, Egypt. Browse our work and contact us via WhatsApp to order.</p>
@@ -255,7 +292,7 @@ footer {
   <div class="popup" id="productPopup">
     <div class="popup-content">
       <span class="close-btn" onclick="closePopup()">&times;</span>
-      <img id="popupImg" src="" alt="Product Image">
+      <div class="popup-images" id="popupImagesContainer"></div>
       <h3 id="popupTitle"></h3>
       <p id="popupDesc"></p>
       <p><strong>Price:</strong> <span id="popupPrice"></span></p>
@@ -284,16 +321,22 @@ footer {
   </footer>
 
   <script>
-    const products = [
-    {
-        title: 'Sign',
-        image: 'Assets/Pictures/El_Zoz_Sign.jpeg',
-        description: 'Beatiful sign for your front dor or bedroom',
-        price: 'Variable',
-        category: 'Decoration'
-      }
-    ];
+    const products = [{
+    title: 'Sign',
+    images: [
+      'Assets/Pictures/El_Zoz_Sign.jpeg',
+      'Assets/Pictures/El_Zoz_Sign_2.jpeg'
+    ],
+    videos: [  // <-- new videos array
+      'Assets/Videos/dualNameSign.mp4'
+    ],
+    description: 'Beautiful sign for your front door or bedroom',
+    price: 'Variable',
+    category: 'Decoration'
+  }
+];
 
+    let currentImageIndex = 0;
     function renderProducts(filter = 'all', search = '') {
       const grid = document.getElementById('productGrid');
       grid.innerHTML = '';
@@ -305,13 +348,90 @@ footer {
         const card = document.createElement('div');
         card.className = 'product-card';
         card.setAttribute('data-category', product.category);
-        card.onclick = () => openPopup(product.title, product.image, product.description, product.price);
+        card.onclick = () => openPopup(product);
         card.innerHTML = `
-          <img src="${product.image}" alt="${product.title}">
+          <img src="${product.images[0]}" alt="${product.title}">
           <h3>${product.title}</h3>
         `;
         grid.appendChild(card);
       });
+    }
+
+    function openPopup(product) {
+  document.getElementById('popupTitle').innerText = product.title;
+  document.getElementById('popupDesc').innerText = product.description;
+  document.getElementById('popupPrice').innerText = product.price;
+
+  const container = document.getElementById('popupImagesContainer');
+  container.innerHTML = '';
+  currentImageIndex = 0;
+
+  // Collect all media elements (images + videos)
+  const mediaElements = [];
+
+  // Add images
+  product.images.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = i === 0 ? 'active' : '';
+    mediaElements.push(img);
+  });
+
+  // Add videos if any
+  if (product.videos) {
+    product.videos.forEach((src, i) => {
+      const video = document.createElement('video');
+      video.src = src;
+      video.controls = true;
+      video.className = (mediaElements.length === 0 && i === 0) ? 'active' : '';
+      mediaElements.push(video);
+    });
+  }
+
+  // Append all media to container
+  mediaElements.forEach(el => container.appendChild(el));
+
+  // Add navigation buttons if more than 1 media
+  if (mediaElements.length > 1) {
+    const prevBtn = document.createElement('button');
+    prevBtn.innerText = '<';
+    prevBtn.className = 'nav-btn prev';
+    prevBtn.onclick = () => switchImage(-1);
+
+    const nextBtn = document.createElement('button');
+    nextBtn.innerText = '>';
+    nextBtn.className = 'nav-btn next';
+    nextBtn.onclick = () => switchImage(1);
+
+    container.appendChild(prevBtn);
+    container.appendChild(nextBtn);
+  }
+
+  document.getElementById('productPopup').style.display = 'flex';
+}
+function switchImage(direction) {
+  const container = document.getElementById('popupImagesContainer');
+  const mediaItems = container.querySelectorAll('img, video');
+
+  // Pause current video if visible and playing
+  const currentMedia = mediaItems[currentImageIndex];
+  if (currentMedia.tagName === 'VIDEO') {
+    currentMedia.pause();
+    currentMedia.currentTime = 0;
+  }
+
+  // Hide current
+  mediaItems[currentImageIndex].classList.remove('active');
+
+  // Calculate next index cyclically
+  currentImageIndex = (currentImageIndex + direction + mediaItems.length) % mediaItems.length;
+
+  // Show new
+  mediaItems[currentImageIndex].classList.add('active');
+}
+
+    function closePopup() {
+      document.getElementById('productPopup').style.display = 'none';
     }
 
     let currentFilter = 'all';
@@ -324,30 +444,17 @@ footer {
       renderProducts(currentFilter, document.getElementById('searchBar').value);
     }
 
-    function openPopup(title, img, desc, price) {
-      document.getElementById('popupTitle').innerText = title;
-      document.getElementById('popupImg').src = img;
-      document.getElementById('popupDesc').innerText = desc;
-      document.getElementById('popupPrice').innerText = price;
-      document.getElementById('productPopup').style.display = 'flex';
-    }
-
-    function closePopup() {
-      document.getElementById('productPopup').style.display = 'none';
-    }
-
     renderProducts();
+
     const toggle = document.getElementById('themeToggle');
-const storedTheme = localStorage.getItem('theme') || 'dark';
-
-document.body.setAttribute('data-theme', storedTheme);
-toggle.checked = storedTheme === 'dark';
-
-toggle.addEventListener('change', () => {
-  const theme = toggle.checked ? 'dark' : 'light';
-  document.body.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-});
+    const storedTheme = localStorage.getItem('theme') || 'dark';
+    document.body.setAttribute('data-theme', storedTheme);
+    toggle.checked = storedTheme === 'dark';
+    toggle.addEventListener('change', () => {
+      const theme = toggle.checked ? 'dark' : 'light';
+      document.body.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    });
   </script>
 </body>
 </html>
