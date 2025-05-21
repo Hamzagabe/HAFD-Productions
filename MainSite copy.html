@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAFD Productions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .features ul {
+      list-style: none;
+      padding: 0;
+    }
+    .features li {
+      background: #e3e3e3;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .filter {
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter button {
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .filter input[type="text"] {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      flex: 1;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .product-card {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+    .product-card h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .popup-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .color-options span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin: 0 5px;
+      border: 1px solid #333;
+    }
+    .color-Silver { background: silver; }
+    .color-Gold { background: gold; }
+    .color-Red { background: red; }
+    .color-Yellow { background: yellow; }
+    .color-Green { background: green; }
+    .color-Blue { background: blue; }
+
+    footer {
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HAFD Productions</h1>
+    <p>Where Ideas Become Reality</p>
+  </header>
+
+  <section class="intro">
+    <p>We make any and all plastic products – from keychains and phone holders to mechanical parts. The only limit is your imagination. Based in Alexandria, Egypt. Browse our work and contact us via WhatsApp to order.</p>
+  </section>
+
+  <section class="features">
+    <h2>Our Services</h2>
+    <ul>
+      <li>🔩 Custom accessories and parts</li>
+      <li>📁 Upload your own design files</li>
+      <li>🎁 Pre-made items like drain cleaners and car phone holders</li>
+      <li>🛠 Prototype parts and practical gadgets</li>
+    </ul>
+  </section>
+
+  <section class="products">
+    <h2>Our Products</h2>
+    <div class="filter">
+      <button onclick="filterProducts('all')">All</button>
+      <button onclick="filterProducts('Utility')">Utility</button>
+      <button onclick="filterProducts('Accessories')">Accessories</button>
+      <button onclick="filterProducts('Decoration')">Decoration</button>
+      <input type="text" id="searchBar" oninput="searchProducts()" placeholder="Search products...">
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <div class="popup" id="productPopup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <img id="popupImg" src="" alt="Product Image">
+      <h3 id="popupTitle"></h3>
+      <p id="popupDesc"></p>
+      <p><strong>Price:</strong> <span id="popupPrice"></span></p>
+      <p><strong>Available Colors:</strong></p>
+      <div class="color-options">
+        <span class="color-Silver"></span>
+        <span class="color-Gold"></span>
+        <span class="color-Red"></span>
+        <span class="color-Yellow"></span>
+        <span class="color-Green"></span>
+        <span class="color-Blue"></span>
+      </div>
+      <br>
+      <a href="https://wa.me/+201065463365" target="_blank">📲 Order on WhatsApp</a>
+    </div>
+  </div>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Ready to order? Contact us directly on WhatsApp.</p>
+    <a href="https://wa.me/+201065463365" target="_blank">📲 Message Us on WhatsApp</a>
+  </section>
+
+  <footer>
+    <p>© 2025 HAFD Productions | Alexandria, Egypt</p>
+  </footer>
+
+  <script>
+    const products = [
+      {
+        title: 'Drain Cleaner',
+        image: 'https://via.placeholder.com/300x200.png?text=Drain+Cleaner',
+        description: 'Durable, flexible plastic tool to unclog sinks and drains.',
+        price: '35 EGP',
+        category: 'Utility'
+      },
+      {
+        title: 'Car Phone Holder',
+        image: 'https://via.placeholder.com/300x200.png?text=Car+Phone+Holder',
+        description: 'Custom-fit holder to secure your phone while driving.',
+        price: '55 EGP',
+        category: 'Accessories'
+      },
+      {
+        title: 'Cable Organizer',
+        image: 'https://via.placeholder.com/300x200.png?text=Cable+Organizer',
+        description: 'Keep your desk tidy with simple, 3D printed cable clips.',
+        price: '25 EGP',
+        category: 'Accessories'
+      },
+      {
+        title: 'Sign',
+        image: 'Assets/Pictures/El_Zoz_Sign.jpeg',
+        description: 'Beatiful sign for your front dor or bedroom',
+        price: 'Variable',
+        category: 'Decoration'
+      }
+    ];
+
+    function renderProducts(filter = 'all', search = '') {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+      const filtered = products.filter(product =>
+        (filter === 'all' || product.category === filter) &&
+        product.title.toLowerCase().includes(search.toLowerCase())
+      );
+      filtered.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.setAttribute('data-category', product.category);
+        card.onclick = () => openPopup(product.title, product.image, product.description, product.price);
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.title}">
+          <h3>${product.title}</h3>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    let currentFilter = 'all';
+    function filterProducts(category) {
+      currentFilter = category;
+      renderProducts(currentFilter, document.getElementById('searchBar').value);
+    }
+
+    function searchProducts() {
+      renderProducts(currentFilter, document.getElementById('searchBar').value);
+    }
+
+    function openPopup(title, img, desc, price) {
+      document.getElementById('popupTitle').innerText = title;
+      document.getElementById('popupImg').src = img;
+      document.getElementById('popupDesc').innerText = desc;
+      document.getElementById('popupPrice').innerText = price;
+      document.getElementById('productPopup').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('productPopup').style.display = 'none';
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>
