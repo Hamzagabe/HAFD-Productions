@@ -1,459 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HAFD Productions</title>
-  <style>
-/* Light Theme (Default) */
-body[data-theme="light"] {
-  background-color: #f7f7f7;
-  color: #333;
-}
-body[data-theme="light"] header,
-body[data-theme="light"] footer {
-  background-color: #1a1a1a;
-  color: white;
-}
-body[data-theme="light"] .features li,
-body[data-theme="light"] .product-card,
-body[data-theme="light"] .popup-content {
-  background: white;
-  border-color: #ccc;
-  color: #333;
-}
-body[data-theme="light"] .filter input[type="text"] {
-  background: white;
-  border: 1px solid #ccc;
-  color: #333;
-}
-
-/* Dark Theme */
-body[data-theme="dark"] {
-  background-color: #121212;
-  color: #f0f0f0;
-}
-body[data-theme="dark"] header,
-body[data-theme="dark"] footer {
-  background-color: #1a1a1a;
-  color: white;
-}
-body[data-theme="dark"] .features li,
-body[data-theme="dark"] .product-card,
-body[data-theme="dark"] .popup-content {
-  background: #1e1e1e;
-  border-color: #333;
-  color: #f0f0f0;
-}
-body[data-theme="dark"] .filter input[type="text"] {
-  background: #1a1a1a;
-  border: 1px solid #444;
-  color: #f0f0f0;
-}
-
-header {
-  background-color: #0b1826;
-  color: white;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-header p {
-  margin-top: 0.5rem;
-  font-size: 1.2rem;
-}
-section {
-  padding: 2rem 1rem;
-  max-width: 1000px;
-  margin: auto;
-}
-.features ul {
-  list-style: none;
-  padding: 0;
-}
-.features li {
-  background: #1e1e1e;
-  margin: 0.5rem 0;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #333;
-}
-.filter {
-  margin-bottom: 1rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.filter button {
-  background: #333;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-}
-.filter button:hover {
-  background: #444;
-}
-.filter input[type="text"] {
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid #444;
-  background-color: #1a1a1a;
-  color: #f0f0f0;
-  flex: 1;
-  min-width: 150px;
-}
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-.product-card {
-  background: #1e1e1e;
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.product-card:hover {
-  transform: translateY(-5px);
-}
-.product-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-}
-.product-card h3 {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-}
-.popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-.popup-content {
-  background: #1e1e1e;
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
-  color: #f0f0f0;
-  border: 1px solid #333;
-}
-.popup-images {
-  position: relative;
-}
-.popup-images img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  display: none;
-}
-.popup-images img.active {
-  display: block;
-}
-.popup-images .nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.2rem 0.5rem;
-}
-.popup-images .prev {
-  left: 10px;
-}
-.popup-images .next {
-  right: 10px;
-}
-
-.popup-images img,
-.popup-images video {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  display: none;
-}
-
-.popup-images img.active,
-.popup-images video.active {
-  display: block;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #aaa;
-}
-.color-options span {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin: 0 5px;
-  border: 1px solid #999;
-}
-.color-Silver { background: silver; }
-.color-Gold { background: gold; }
-.color-Red { background: red; }
-.color-Yellow { background: yellow; }
-.color-Green { background: green; }
-.color-Blue { background: blue; }
-
-footer {
-  text-align: center;
-  background: #1a1a1a;
-  color: white;
-  padding: 1rem;
-}
-
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 2rem;
-  }
-  header p {
-    font-size: 1rem;
-  }
-  .popup-content {
-    padding: 1rem;
-  }
-  .product-card img {
-    height: 140px;
-  }
-}
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HAFD Productions - Custom plastic manufacturing in Alexandria, Egypt. 3D printed products, prototypes, and custom designs.">
+  <title>HAFD Productions | Custom Plastic Manufacturing</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" href="Assets/Pictures/El_Zoz_Sign.jpeg" as="image">
 </head>
 <body>
   <header>
-    <h1>HAFD Productions</h1>
-    <p>Where Ideas Become Reality</p>
-    <div style="margin-top: 1rem;">
-      <label style="cursor: pointer;">
-        <input type="checkbox" id="themeToggle" style="transform: scale(1.2); margin-right: 0.5rem;" />
-        Dark Mode
-      </label>
+    <div class="header-content">
+      <div class="branding">
+        <h1>HAFD Productions</h1>
+        <p class="tagline">Where Ideas Become Reality</p>
+      </div>
     </div>
+     <div id="google_translate_element"></div>
   </header>
 
-
-  <section class="intro">
-    <p>We make any and all plastic products – from keychains and phone holders to mechanical parts. The only limit is your imagination. Based in Alexandria, Egypt. Browse our work and contact us via WhatsApp to order.</p>
-  </section>
-
-  <section class="features">
-    <h2>Our Services</h2>
-    <ul>
-      <li>🔩 Custom accessories and parts</li>
-      <li>📁 Upload your own design files</li>
-      <li>🎁 Pre-made items like drain cleaners and car phone holders</li>
-      <li>🛠 Prototype parts and practical gadgets</li>
-    </ul>
-  </section>
-
-  <section class="products">
-    <h2>Our Products</h2>
-    <div class="filter">
-      <button onclick="filterProducts('all')">All</button>
-      <button onclick="filterProducts('Utility')">Utility</button>
-      <button onclick="filterProducts('Accessories')">Accessories</button>
-      <button onclick="filterProducts('Decoration')">Decoration</button>
-      <input type="text" id="searchBar" oninput="searchProducts()" placeholder="Search products...">
-    </div>
-    <div class="product-grid" id="productGrid"></div>
-  </section>
-
-  <div class="popup" id="productPopup">
-    <div class="popup-content">
-      <span class="close-btn" onclick="closePopup()">&times;</span>
-      <div class="popup-images" id="popupImagesContainer"></div>
-      <h3 id="popupTitle"></h3>
-      <p id="popupDesc"></p>
-      <p><strong>Price:</strong> <span id="popupPrice"></span></p>
-      <p><strong>Available Colors:</strong></p>
-      <div class="color-options">
-        <span class="color-Silver"></span>
-        <span class="color-Gold"></span>
-        <span class="color-Red"></span>
-        <span class="color-Yellow"></span>
-        <span class="color-Green"></span>
-        <span class="color-Blue"></span>
+  <nav class="navbar" aria-label="Main navigation">
+    <button class="hamburger" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#intro" class="nav-link">About</a></li>
+      <li><a href="#features" class="nav-link">Services</a></li>
+      <li><a href="#products" class="nav-link">Products</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <div class="theme-toggle-container">
+        <label for="themeToggle" class="theme-toggle">
+          <input type="checkbox" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="slider"></span>
+          <span class="toggle-text">Dark Mode</span>
+        </label>
       </div>
-      <br>
-      <a href="https://wa.me/+201065463365" target="_blank">📲 Order on WhatsApp</a>
-    </div>
-  </div>
+    </ul>
+  </nav>
 
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <p>Ready to order? Contact us directly on WhatsApp.</p>
-    <a href="https://wa.me/+201065463365" target="_blank">+20 106 5463365</a>
-  </section>
+  <main>
+    <section class="intro" id="intro">
+      <div class="container">
+        <p>We make any and all plastic products – from keychains and phone holders to mechanical parts. The only limit is your imagination. Based in Alexandria, Egypt. Browse our work and contact us via WhatsApp to order.</p>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="container">
+        <h2>Our Services</h2>
+        <ul class="services-list">
+          <li class="service-item">
+            <span class="icon">🔩</span>
+            <span>Custom accessories and parts</span>
+          </li>
+          <li class="service-item">
+            <span class="icon">📁</span>
+            <span>Upload your own design files</span>
+          </li>
+          <li class="service-item">
+            <span class="icon">🎁</span>
+            <span>Pre-made items like drain cleaners and car phone holders</span>
+          </li>
+          <li class="service-item">
+            <span class="icon">🛠</span>
+            <span>Prototype parts and practical gadgets</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <div class="container">
+        <h2>Our Products</h2>
+        <div class="filter-controls">
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Utility">Utility</button>
+            <button class="filter-btn" data-filter="Accessories">Accessories</button>
+            <button class="filter-btn" data-filter="Decoration">Decoration</button>
+          </div>
+          <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search products..." aria-label="Search products">
+            <span class="search-icon">🔍</span>
+          </div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <div class="popup" id="productPopup" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-hidden="true">
+      <div class="popup-overlay" onclick="closePopup()"></div>
+      <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()" aria-label="Close popup">&times;</button>
+        <div class="popup-media" id="popupImagesContainer"></div>
+        <div class="popup-info">
+          <h3 id="popupTitle"></h3>
+          <p id="popupDesc"></p>
+          <p class="price"><strong>Price:</strong> <span id="popupPrice"></span></p>
+          <div class="color-section">
+            <p class="color-label"><strong>Available Colors:</strong></p>
+            
+          </div>
+          <a href="https://wa.me/+201065463365" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            <span class="whatsapp-icon">📲</span> Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>Ready to order? Contact us directly on WhatsApp.</p>
+        <a href="https://wa.me/+201065463365" class="whatsapp-link" target="_blank" rel="noopener noreferrer">
+          +20 106 5463365
+        </a>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 HAFD Productions | Alexandria, Egypt</p>
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> HAFD Productions | Alexandria, Egypt</p>
+    </div>
   </footer>
 
-  <script>
-    const products = [{
-    title: 'Sign',
-    images: [
-      'Assets/Pictures/El_Zoz_Sign.jpeg',
-    ],
-    videos: [  // <-- new videos array
-      'Assets/Videos/dualNameSign.mp4'
-    ],
-    description: 'Beautiful sign for your front door or bedroom',
-    price: 'Variable',
-    category: 'Decoration'
+ 
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'ar',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
   }
-];
+</script>
 
-    let currentImageIndex = 0;
-    function renderProducts(filter = 'all', search = '') {
-      const grid = document.getElementById('productGrid');
-      grid.innerHTML = '';
-      const filtered = products.filter(product =>
-        (filter === 'all' || product.category === filter) &&
-        product.title.toLowerCase().includes(search.toLowerCase())
-      );
-      filtered.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.setAttribute('data-category', product.category);
-        card.onclick = () => openPopup(product);
-        card.innerHTML = `
-          <img src="${product.images[0]}" alt="${product.title}">
-          <h3>${product.title}</h3>
-        `;
-        grid.appendChild(card);
-      });
-    }
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    function openPopup(product) {
-  document.getElementById('popupTitle').innerText = product.title;
-  document.getElementById('popupDesc').innerText = product.description;
-  document.getElementById('popupPrice').innerText = product.price;
+  <script src="script.js" defer></script>
 
-  const container = document.getElementById('popupImagesContainer');
-  container.innerHTML = '';
-  currentImageIndex = 0;
-
-  // Collect all media elements (images + videos)
-  const mediaElements = [];
-
-  // Add images
-  product.images.forEach((src, i) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.className = i === 0 ? 'active' : '';
-    mediaElements.push(img);
-  });
-
-  // Add videos if any
-  if (product.videos) {
-    product.videos.forEach((src, i) => {
-      const video = document.createElement('video');
-      video.src = src;
-      video.controls = true;
-      video.className = (mediaElements.length === 0 && i === 0) ? 'active' : '';
-      mediaElements.push(video);
-    });
-  }
-
-  // Append all media to container
-  mediaElements.forEach(el => container.appendChild(el));
-
-  // Add navigation buttons if more than 1 media
-  if (mediaElements.length > 1) {
-    const prevBtn = document.createElement('button');
-    prevBtn.innerText = '<';
-    prevBtn.className = 'nav-btn prev';
-    prevBtn.onclick = () => switchImage(-1);
-
-    const nextBtn = document.createElement('button');
-    nextBtn.innerText = '>';
-    nextBtn.className = 'nav-btn next';
-    nextBtn.onclick = () => switchImage(1);
-
-    container.appendChild(prevBtn);
-    container.appendChild(nextBtn);
-  }
-
-  document.getElementById('productPopup').style.display = 'flex';
-}
-function switchImage(direction) {
-  const container = document.getElementById('popupImagesContainer');
-  const mediaItems = container.querySelectorAll('img, video');
-
-  // Pause current video if visible and playing
-  const currentMedia = mediaItems[currentImageIndex];
-  if (currentMedia.tagName === 'VIDEO') {
-    currentMedia.pause();
-    currentMedia.currentTime = 0;
-  }
-
-  // Hide current
-  mediaItems[currentImageIndex].classList.remove('active');
-
-  // Calculate next index cyclically
-  currentImageIndex = (currentImageIndex + direction + mediaItems.length) % mediaItems.length;
-
-  // Show new
-  mediaItems[currentImageIndex].classList.add('active');
-}
-
-    function closePopup() {
-      document.getElementById('productPopup').style.display = 'none';
-    }
-
-    let currentFilter = 'all';
-    function filterProducts(category) {
-      currentFilter = category;
-      renderProducts(currentFilter, document.getElementById('searchBar').value);
-    }
-
-    function searchProducts() {
-      renderProducts(currentFilter, document.getElementById('searchBar').value);
-    }
-
-    renderProducts();
-
-    const toggle = document.getElementById('themeToggle');
-    const storedTheme = localStorage.getItem('theme') || 'dark';
-    document.body.setAttribute('data-theme', storedTheme);
-    toggle.checked = storedTheme === 'dark';
-    toggle.addEventListener('change', () => {
-      const theme = toggle.checked ? 'dark' : 'light';
-      document.body.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-    });
-  </script>
 </body>
 </html>
