@@ -25,7 +25,7 @@ const products = [
     videos: [],
     description: 'Beautiful sign for your front door or bedroom. Customizable with any name or design to match your personal style.',
     price: 'Price varies based on size and design',
-    category: 'Decoration',
+    category: ['Decoration', 'Gift', 'Customizable'],
     colors: ["green","silver","gold","red","yellow","blue"]
   },
   {
@@ -40,7 +40,7 @@ const products = [
     videos: [],
     description: 'Show your bond with this customizable heart keychain. Perfect for couples, friends, or family members. Available in multiple colors.',
     price: 'Price varies based on size and design',
-    category: 'Accessories',
+    category: ['Accessories', 'Gift', 'Customizable'],
     colors: ["green","silver","gold","red","yellow","blue"]
   },
   {
@@ -57,7 +57,7 @@ const products = [
     ],
     description: 'Wanna add some personality to your keys? Well use this customizable keychain to spice it up🔥! ',
     price: 'Price varies based on size and design',
-    category: 'Accessories',
+    category: ['Accessories', 'Gift', 'Customizable'],
     colors: ["green","silver","gold","red","yellow","blue"]
   },
   {
@@ -72,7 +72,7 @@ const products = [
     ],
     description: 'Wanna add some personality to your keys? Well use this customizable keychain to spice it up🔥! ',
     price: 'Price varies based on size and design',
-    category: 'Accessories',
+    category: ['Decoration', 'Gift', 'Customizable'],
     colors: ["green","silver","gold","red","yellow","blue"]
   },
   {
@@ -86,7 +86,7 @@ const products = [
     ],
     description: 'This tool right here is so useful you can remove hair and other objects from drains.',
     price: '25 EGP',
-    category: 'Utility',
+    category: ['Utility'],
     colors: ["green"]
   },
   {
@@ -102,7 +102,7 @@ const products = [
     ],
     description: 'Got opend bags that wont close? And you dont want them to go stale? Well just usse this bag clip!',
     price: '35 EGP',
-    category: 'Utility',
+    category: ['Utility'],
     colors: ["green"]
   },
    {
@@ -116,7 +116,37 @@ const products = [
     ],
     description: 'If you like reading you will want to save where you stopped reading.So this bookmark makrs the page for you! you can also use it to turn pages without touching the book!',
     price: '20 EGP',
-    category: 'Utility',
+    category: ['Utility'],
+    colors: ["green"]
+  },
+  {
+    title: 'Car Vent Phone Holder',
+    images: [
+      'Assets/Pictures/CarVentPhoneHolder.png',
+    ],
+    videos: [
+      'Assets/Videos/Car vent Phone Holder.mp4',
+    ],
+    description: 'Ever wanted to have a hands free way to use your phone in the car?Well now you can!With this phone holder that holds onto the air vents in your car! ',
+    price: '180 EGP',
+    category: ['Utility'],
+    colors: ["green"]
+  },
+  {
+    title: 'Foldable phone stand keychain',
+    images: [
+      'Assets/Pictures/Foldable phone stand keychain1.jpeg',
+        'Assets/Pictures/Foldable phone stand keychain2.jpeg',
+          'Assets/Pictures/Foldable phone stand keychain3.jpeg',
+            'Assets/Pictures/Foldable phone stand keychain4.jpeg',
+              'Assets/Pictures/Foldable phone stand keychain5.jpeg',
+    ],
+    videos: [
+      'Assets/Videos/Foldable phone stand keychain.mp4',
+    ],
+    description: 'Ever wanted to have a hands free way to use your phone on the go? Well now you can with this portable and foldable phone stand keychain! And i is customizable to put your name!',
+    price: 'Price varies based on the text',
+    category: ['Accessories', 'Gift', 'Customizable','Utility'],
     colors: ["green"]
   },
   
@@ -171,7 +201,8 @@ function renderProducts(filter = 'all', searchTerm = '') {
   productGrid.innerHTML = '';
   
   const filteredProducts = products.filter(product => {
-    const matchesFilter = filter === 'all' || product.category === filter;
+  const matchesFilter = filter === 'all' || (Array.isArray(product.category) ? product.category.includes(filter) : product.category === filter);
+
     const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          product.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesFilter && matchesSearch;
@@ -193,7 +224,9 @@ function renderProducts(filter = 'all', searchTerm = '') {
       </div>
       <div class="product-info">
         <h3>${product.title}</h3>
-        <span class="product-category">${product.category}</span>
+        <span class="product-category">
+       ${Array.isArray(product.category) ? product.category.join(', ') : product.category}
+        </span>
       </div>
     `;
     productCard.addEventListener('click', () => openProductPopup(product));
