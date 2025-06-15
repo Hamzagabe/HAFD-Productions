@@ -69,6 +69,7 @@ const products = [
       'Assets/Videos/DualNameSign.mp4',
       'Assets/Videos/DualNameSign2.mp4',
       'Assets/Videos/DualNameSign3.mp4',
+      'Assets/Videos/DualNameSign4.mp4',
     ],
     description: 'Wanna add some personality to your keys? Well use this customizable keychain to spice it up🔥! ',
     price: 'Price varies based on size and design',
@@ -143,10 +144,27 @@ const products = [
     ],
     videos: [
       'Assets/Videos/Foldable phone stand keychain.mp4',
+      'Assets/Videos/Foldable phone stand keychain2.mp4',
     ],
     description: 'Ever wanted to have a hands free way to use your phone on the go? Well now you can with this portable and foldable phone stand keychain! And i is customizable to put your name!',
     price: 'Price varies based on the text',
     category: ['Accessories', 'Gift', 'Customizable','Utility'],
+    colors: ["green", "silver", "red"]
+  },
+   {
+    title: 'Hexagon Fidget keychain',
+    images: [
+       'Assets/Pictures/Hexagon Fidget keychain.jpeg',
+       'Assets/Pictures/Hexagon Fidget keychain2.jpeg',
+       'Assets/Pictures/Hexagon Fidget keychain3.jpeg',
+       'Assets/Pictures/Hexagon Fidget keychain4.jpeg',
+    ],
+    videos: [
+      'Assets/Videos/Hexagon Fidget keychain.mp4',
+    ],
+    description: 'Are you having stress and anxiety? Well this fidget toy is here to help! You can play with it for hours on end!',
+    price: '60 EGP',
+    category: ['Accessories', 'Gift', 'Customizable'],
     colors: ["green"]
   },
   
