@@ -144,7 +144,6 @@ const products = [
     ],
     videos: [
       'Assets/Videos/Foldable phone stand keychain.mp4',
-      'Assets/Videos/Foldable phone stand keychain2.mp4',
     ],
     description: 'Ever wanted to have a hands free way to use your phone on the go? Well now you can with this portable and foldable phone stand keychain! And i is customizable to put your name!',
     price: 'Price varies based on the text',
