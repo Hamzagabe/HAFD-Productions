@@ -26,7 +26,7 @@ const products = [
     description: 'Beautiful sign for your front door or bedroom. Customizable with any name or design to match your personal style.',
     price: 'Price varies based on size and design',
     category: ['Decoration', 'Gift', 'Customizable'],
-    colors: ["green","silver","gold","red","yellow","blue"]
+
   },
   {
     title: 'Heart Keychain',
@@ -41,7 +41,7 @@ const products = [
     description: 'Show your bond with this customizable heart keychain. Perfect for couples, friends, or family members. Available in multiple colors.',
     price: 'Price varies based on size and design',
     category: ['Accessories', 'Gift', 'Customizable'],
-    colors: ["green","silver","gold","red","yellow","blue"]
+
   },
   {
     title: 'Keychain',
@@ -58,7 +58,7 @@ const products = [
     description: 'Wanna add some personality to your keys? Well use this customizable keychain to spice it up🔥! ',
     price: 'Price varies based on size and design',
     category: ['Accessories', 'Gift', 'Customizable'],
-    colors: ["green","silver","gold","red","yellow","blue"]
+
   },
   {
     title: 'Dual Name Sign',
@@ -74,7 +74,7 @@ const products = [
     description: 'Wanna add some personality to your keys? Well use this customizable keychain to spice it up🔥! ',
     price: 'Price varies based on size and design',
     category: ['Decoration', 'Gift', 'Customizable'],
-    colors: ["green","silver","gold","red","yellow","blue"]
+
   },
   {
     
@@ -88,7 +88,7 @@ const products = [
     description: 'This tool right here is so useful you can remove hair and other objects from drains.',
     price: '25 EGP',
     category: ['Utility'],
-    colors: ["green"]
+
   },
   {
     title: 'Crocodile bag Clip',
@@ -104,7 +104,6 @@ const products = [
     description: 'Got opend bags that wont close? And you dont want them to go stale? Well just usse this bag clip!',
     price: '35 EGP',
     category: ['Utility'],
-    colors: ["green"]
   },
    {
     title: 'Bookmark',
@@ -118,7 +117,6 @@ const products = [
     description: 'If you like reading you will want to save where you stopped reading.So this bookmark makrs the page for you! you can also use it to turn pages without touching the book!',
     price: '20 EGP',
     category: ['Utility'],
-    colors: ["green"]
   },
   {
     title: 'Car Vent Phone Holder',
@@ -131,7 +129,6 @@ const products = [
     description: 'Ever wanted to have a hands free way to use your phone in the car?Well now you can!With this phone holder that holds onto the air vents in your car! ',
     price: '180 EGP',
     category: ['Utility'],
-    colors: ["green"]
   },
   {
     title: 'Foldable phone stand keychain',
@@ -148,7 +145,7 @@ const products = [
     description: 'Ever wanted to have a hands free way to use your phone on the go? Well now you can with this portable and foldable phone stand keychain! And i is customizable to put your name!',
     price: 'Price varies based on the text',
     category: ['Accessories', 'Gift', 'Customizable','Utility'],
-    colors: ["green", "silver", "red"]
+
   },
    {
     title: 'Hexagon Fidget keychain',
@@ -164,7 +161,20 @@ const products = [
     description: 'Are you having stress and anxiety? Well this fidget toy is here to help! You can play with it for hours on end!',
     price: '60 EGP',
     category: ['Accessories', 'Gift', 'Customizable'],
-    colors: ["green"]
+    
+  },
+  {
+    title: 'Jewlery Tree',
+    images: [
+       'Assets/Pictures/Jewlery Tree.jpeg',
+    ],
+    videos: [
+      'Assets/Videos/Jewlery Tree.mp4',
+    ],
+    description: 'Do you have lots of jewlery and want a nice and beuatiful way of storing it ?Well now you can with this Jewlery Tree!',
+    price: '100 EGP',
+    category: ['Accessories', 'Gift', 'Customizable', 'Utility', 'Decoration'],
+    
   },
   
 ];
