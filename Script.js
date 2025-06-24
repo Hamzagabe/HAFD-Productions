@@ -176,6 +176,23 @@ const products = [
     category: ['Accessories', 'Gift', 'Customizable', 'Utility', 'Decoration'],
     
   },
+
+  {
+    title: 'Seed & Peanut Cracker',
+    images: [
+       'Assets/Pictures/Seed & Peaanut Cracker.jpeg',
+       'Assets/Pictures/Seed & Peaanut Cracker2.jpeg',
+       'Assets/Pictures/Seed & Peaanut Cracker3.jpeg',
+       'Assets/Pictures/Seed & Peaanut Cracker4.jpeg',
+    ],
+    videos: [
+      'Assets/Videos/Seed & Peaanut Cracker.mp4',
+    ],
+    description: 'Are you tired of cracking seeds yourself?Well this product solves that problem for you! It cracks the seeds for you!',
+    price: 'Seed cracker: 55 EGP / Seed & peanut cracker: 75 Egp',
+    category: ['Accessories', 'Gift', 'Utility'],
+    
+  },
   
 ];
 
