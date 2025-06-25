@@ -193,6 +193,21 @@ const products = [
     category: ['Accessories', 'Gift', 'Utility'],
     
   },
+  {
+    title: 'Pill Box',
+    images: [
+       'Assets/Pictures/Pill Box.jpeg',
+        'Assets/Pictures/Pill Box2.jpeg',
+         'Assets/Pictures/Pill Box3.jpeg',
+    ],
+    videos: [
+      'Assets/Videos/Pill Box.mp4',
+    ],
+    description: 'Are you forgeting to take your pills in the correct amounts or need a neat way to store them?Well now you can do just that with this pill box!',
+    price: '70 Egp',
+    category: ['Accessories', 'Gift', 'Utility'],
+    
+  },
   
 ];
 
