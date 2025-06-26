@@ -208,6 +208,24 @@ const products = [
     category: ['Accessories', 'Gift', 'Utility'],
     
   },
+  {
+    title: 'DNA Pen Holder',
+    images: [
+       'Assets/Pictures/DNA Pen Holder.jpeg',
+        'Assets/Pictures/DNA Pen Holder2.jpeg',
+         'Assets/Pictures/DNA Pen Holder3.jpeg',
+         'Assets/Pictures/DNA Pen Holder4.jpeg',
+         'Assets/Pictures/DNA Pen Holder5.jpeg',
+    ],
+    videos: [
+      'Assets/Videos/DNA Pen Holder.mp4',
+    ],
+    description: 'Do you have lots of pens lying around and want a nice and neat way to store them? Well this DNA shaped pen holder !',
+    price: '260 Egp',
+    category: ['Decoration', 'Gift', 'Utility'],
+    
+  },
+  
   
 ];
 
