@@ -225,6 +225,33 @@ const products = [
     category: ['Decoration', 'Gift', 'Utility'],
     
   },
+  {
+    title: 'Hanger Hook Extention',
+    images: [
+       'Assets/Pictures/Hanger Hook Extention (1).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (2).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (3).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (4).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (5).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (6).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (7).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (8).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (9).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (10).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (11).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (12).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (13).jpeg',
+       'Assets/Pictures/Hanger Hook Extention (14).jpeg',
+
+    ],
+    videos: [
+      'Assets/Videos/Hanger Hook Extention.mp4',
+    ],
+    description: 'Do you need more space to put your hangers? Well this product is perfect for you!',
+    price: '35 Egp',
+    category: ['Utility'],
+    
+  },
   
   
 ];
