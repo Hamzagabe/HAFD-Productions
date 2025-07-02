@@ -252,6 +252,25 @@ const products = [
     category: ['Utility'],
     
   },
+  {
+    title: 'Custom Wall decoration',
+    images: [
+       'Assets/Pictures/Wall Decoration (8).jpeg',
+       'Assets/Pictures/Wall Decoration (7).jpeg',
+       'Assets/Pictures/Wall Decoration (6).jpeg',
+       'Assets/Pictures/Wall Decoration (5).jpeg',
+       'Assets/Pictures/Wall Decoration (4).jpeg',
+       'Assets/Pictures/Wall Decoration (3).jpeg',
+       'Assets/Pictures/Wall Decoration (2).jpeg',
+       'Assets/Pictures/Wall Decoration (1).jpeg',
+    ],
+    videos: [
+    ],
+    description: 'Are your walls empty and you want something to fill it? Well this customizable wall decoration would be perfect for you!(Please note that the design you choose may not have souls meaning no animals and humans but fictional animals are fine)',
+    price: 'Price changes based on design',
+    category: ['Decoration', 'Customizable', 'Gift'],
+    
+  },
   
   
 ];
