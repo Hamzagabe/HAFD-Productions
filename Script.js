@@ -283,7 +283,7 @@ const products = [
       'Assets/Videos/SodaCover.mp4'
     ],
     description: 'Alot of times we dont finish our soda and we leave it in the fridge, so it loses its steam.If you have that same problem then this is perfect for you it covers the opening and prevents anything from coming in!',
-    price: '40Egp',
+    price: '35Egp',
     category: ['Utility', 'Accessories', 'Gift'],
     
   },
