@@ -271,6 +271,35 @@ const products = [
     category: ['Decoration', 'Customizable', 'Gift'],
     
   },
+  {
+  title: 'Soda cover',
+    images: [
+       'Assets/Pictures/SodaCover (1).jpeg',
+       'Assets/Pictures/SodaCover (2).jpeg',
+       'Assets/Pictures/SodaCover (3).jpeg',
+       'Assets/Pictures/SodaCover (4).jpeg',
+    ],
+    videos: [
+      'Assets/Videos/SodaCover.mp4'
+    ],
+    description: 'Alot of times we dont finish our soda and we leave it in the fridge, so it loses its steam.If you have that same problem then this is perfect for you it covers the opening and prevents anything from coming in!',
+    price: '40Egp',
+    category: ['Utility', 'Accessories', 'Gift'],
+    
+  },
+  {
+  title: 'Custom Tracing Ruler',
+    images: [
+       'Assets/Pictures/TracingRuler.jpeg',
+    ],
+    videos: [
+      'Assets/Videos/TracingRuler.mp4'
+    ],
+    description: 'Lately in schools we need to decorate our pages and some people spend hours on it! And this product is your hero it reducees the time needed by alot!',
+    price: 'varies on design',
+    category: ['Utility','Accessories', 'Gift', 'Customizable'],
+    
+  },
   
   
 ];
